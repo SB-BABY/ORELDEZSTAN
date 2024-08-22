@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/style.css">
+	<!-- CSS -->
+	<title>Бюджетное учреждение здравоохранения Орловской области "Орловская дезинфекционная станция"</title>
+</head>
+
+<body>
+
+	<!-- START HEADER -->
+	<header class="header">
+		<div class="header__container container">
+			<a href="/" class="header__logo logo">
+				<img src="./img/HEADER/logo.png" alt="Logo" class="logo__image" width="40" height="40" loading="lazy">
+				Орловская дезинфекционная станция
+			</a>
+
+			<nav class="header__menu hidden-mobile">
+				<ul class="header__menu-list">
+					<li class="header__menu-item">
+
+					<li class="header__menu-item dropdown">
+						<a href="services.html" class="header__menu-link" >
+							Услуги
+							<!-- <span class="material-symbols-outlined expand-icon"> expand_more </span> -->
+						</a>
+
+						<div class="dropdown-content" id="myDropdown">
+							<div class="nested-dropdown">
+								<a href="#" data-service="dezinfektsiya" class="nested-link">
+									Дезинфекция
+								</a>
+
+								<div class="nested-dropdown-content">
+									<a href="#">
+										Дезинфекция автотранспорта
+									</a>
+									<a href="#">
+										Дeзинфeкция ствoлoв муcoрoпрoвoдa
+									</a>
+									<a href="#">
+										Дезинфекция квартиры после трупа
+									</a>
+								</div>
+							</div>
+
+							<a href="#" data-service="deratizatsiya" class="nested-link">
+								Дератизация
+							</a>
+
+							<div class="nested-dropdown">
+								<a href="#" data-service="dezinsektsiya" class="nested-link">
+									Дезинсекция
+								</a>
+
+								<div class="nested-dropdown-content">
+									<a href="#">
+										Педикулёз
+									</a>
+								</div>
+							</div>
+
+						</div>
+					</li>
+					</li>
+					<li class="header__menu-item"><a href="#" class="header__menu-link">Контакты</a></li>
+					<li class="header__menu-item"><a href="#" class="header__menu-link">Документы</a></li>
+					<li class="header__menu-item"><a href="#" class="header__menu-link">О нас</a></li>
+					<li class="header__menu-item"><a href="./korupzia.html" class="header__menu-link">Противодействие
+							коррупции</a></li>
+					<li class="header__menu-item"><a href="#" class="header__menu-link">Связаться</a></li>
+				</ul>
+			</nav>
+
+			<!-- БУРГЕР КНОПКА -->
+			<button class="header__burger-button burger-button visible-mobile" type="button"
+				onclick="mobileOverlay.showModal()">
+				<span class="visually-hidden">Open navigation menu</span>
+			</button>
+			<!-- БУРГЕР КНОПКА -->
+
+		</div>
+	</header>
+	<!-- END HEADER -->
+
+	<!-- START MAIN -->
+	<main class="main">
+		<!-- START HERO -->
+		<section class="hero">
+			<div class="hero__container container">
+
+				<div class="hero__left">
+					<h1 class="hero__title">
+						Чистота и безопасность Орловщины!
+					</h1>
+
+					<p class="hero__text">
+						Мы предоставляем комплексные услуги по санитарной
+						обработке помещений и территорий, обеспечивая защиту
+						от вредителей и возбудителей инфекций.
+					</p>
+
+					<a href="#" class="hero__button button">Связаться</a>
+				</div>
+
+				<!-- <div class="hero__right hidden-mobile">
+					<img src="./img/HERO/HERO.png" alt="Дезинфекторы" class="hero__img" loading="lazy">
+				</div> -->
+
+			</div>
+		</section>
+		<!-- END HERO -->
+
+		<!-- START BANNER -->
+		<section class="banner">
+			<div class="banner__container container">
+				<h2 class="banner__title">
+					Оставьте заявку бесплатно или позвоните по номеру
+				</h2>
+
+				<a href="#" class="banner__tel">+7 (999) 999-99-99</a>
+
+				<button class="button">Оставить заявку</button>
+			</div>
+		</section>
+		<!-- END BANNER -->
+
+		<!-- START SERVICES -->
+		<section class="services">
+			<div class="container services__container">
+				<h2 class="services__title">
+					Услуги
+				</h2>
+
+				<ul class="services__list">
+
+					<li class="services__item">
+						<img src="./img/SERVICES/1.png" alt="Работа с тараканами" class="services__img" width="100%"
+							height="auto">
+
+						<h3 class="services__item-title">
+							Услуга такая
+						</h3>
+
+						<p class="services__item-descr">
+							Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere, eius!
+						</p>
+
+						<a href="#" class="button-small services__item-btn">
+							Заказать
+						</a>
+					</li>
+
+					<li class="services__item">
+						<img src="./img/SERVICES/1.png" alt="Работа с тараканами" class="services__img" width="100%"
+							height="auto">
+
+						<h3 class="services__item-title">
+							Услуга такая
+						</h3>
+
+						<p class="services__item-descr">
+							Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere, eius!
+						</p>
+
+						<a href="#" class="button-small services__item-btn">
+							Заказать
+						</a>
+					</li>
+
+					<li class="services__item">
+						<img src="./img/ABOUT/О НАС.png" alt="Работа с тараканами" class="services__img">
+
+						<h3 class="services__item-title">
+							Услуга такая
+						</h3>
+
+						<p class="services__item-descr">
+							Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere, eius!
+						</p>
+
+						<a href="#" class="button-small services__item-btn">
+							Заказать
+						</a>
+					</li>
+
+				</ul>
+			</div>
+		</section>
+		<!-- END SERVICES -->
+
+		<!-- START WHY -->
+		<!-- END WHY -->
+
+		<!-- START ABOUT -->
+		<section class="about">
+			<div class="about__container container">
+				<h2 class="about__title">
+					О нас
+				</h2>
+
+				<div class="about__content">
+					<div class="about__left">
+						<p class="about__text">
+							Учредителем является субъект Российской Федерации — Орловская область.
+							Функции учредителя осуществляет
+							Департамент здравоохранения Орловской области.
+						</p>
+
+						<p class="about__text">
+							Основными видами деятельности являются:
+						</p>
+
+						<ul class="about__text about__text-list">
+							<li class="about__text-item">
+								Проведение дератизационных, дезинсекционных,
+								дезинфекционных работ в очагах инфекционных и паразитарных заболеваний,
+							</li>
+							<li class="about__text-item">
+								Проведение дератизации, дезинсекции, дезинфекции
+								зданий, сооружений, и территорий, промышленного и
+								торгового оборудования с профилактической целью.
+							</li>
+						</ul>
+					</div>
+
+					<div class="about__right">
+						<img src="././img/ABOUT/О НАС.png" alt="О нас" class="about__img" width="100%" height="auto">
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- END ABOUT -->
+
+		<!-- START PROCESS -->
+		<!-- END PROCESS -->
+
+		<!-- START QUESTIONS -->
+		<section class="questions">
+			<div class="questions__container container">
+				<h2 class="questions__title">
+					Частые вопросы
+				</h2>
+
+				<ul class="questions__list">
+					<li class="questions__item">
+
+						<div class="questions__item-accordeon">
+
+						</div>
+
+						<h3 class="questions__item-title">
+							Какие методы и средства используются для дезинфекции?
+						</h3>
+
+						<p class="questions__item-text ">
+							Для дезинфекции мы используем различные методы и средства, в зависимости от типа помещения, вида
+							вредителей и степени заражения.
+							Например, для уничтожения насекомых мы применяем инсектициды, а для борьбы с бактериями и вирусами
+							- дезинфицирующие растворы.
+							Все наши препараты сертифицированы и безопасны для людей и домашних животных. Процесс дезинфекции
+							может занять
+							от нескольких часов до нескольких дней, в зависимости от размера помещения и сложности задачи.
+						</p>
+					</li>
+
+					<li class="questions__item">
+
+						<div class="questions__item-accordeon">
+
+						</div>
+
+						<h3 class="questions__item-title">
+							Какие методы и средства используются для дезинфекции?
+						</h3>
+
+						<p class="questions__item-text none">
+							Для дезинфекции мы используем различные методы и средства, в зависимости от типа помещения, вида
+							вредителей и степени заражения.
+							Например, для уничтожения насекомых мы применяем инсектициды, а для борьбы с бактериями и вирусами
+							- дезинфицирующие растворы.
+							Все наши препараты сертифицированы и безопасны для людей и домашних животных. Процесс дезинфекции
+							может занять
+							от нескольких часов до нескольких дней, в зависимости от размера помещения и сложности задачи.
+						</p>
+					</li>
+
+					<li class="questions__item">
+
+						<div class="questions__item-accordeon">
+
+						</div>
+
+						<h3 class="questions__item-title">
+							Какие методы и средства используются для дезинфекции?
+						</h3>
+
+						<p class="questions__item-text none">
+							Для дезинфекции мы используем различные методы и средства, в зависимости от типа помещения, вида
+							вредителей и степени заражения.
+							Например, для уничтожения насекомых мы применяем инсектициды, а для борьбы с бактериями и вирусами
+							- дезинфицирующие растворы.
+							Все наши препараты сертифицированы и безопасны для людей и домашних животных. Процесс дезинфекции
+							может занять
+							от нескольких часов до нескольких дней, в зависимости от размера помещения и сложности задачи.
+						</p>
+					</li>
+				</ul>
+			</div>
+		</section>
+		<!-- END QUESTIONS -->
+
+		<!-- START CONTACT -->
+		<section class="contact">
+			<div class="contact__container container">
+				<h2 class="contact__title">
+					Контакты
+				</h2>
+
+				<div class="contact__content">
+					<div class="contact__left">
+
+						<div class="contact__info">
+							<h3 class="contact__info-title">
+								Телефон
+							</h3>
+
+							<a href="tel:74862475347" class="contact__info-text">
+								+7 (4862) 47-53-47
+							</a>
+						</div>
+
+						<div class="contact__info">
+							<h3 class="contact__info-title">
+								Адрес
+							</h3>
+
+							<p class="contact__info-text">
+								Орловская область, город Орел, <br>площадь Ленина, д.1
+							</p>
+						</div>
+
+						<div class="contact__info">
+							<h3 class="contact__info-title">
+								Почта
+							</h3>
+
+							<a href="mailto:zdrav@adm.orel.ru" class="contact__info-text">
+								zdrav@adm.orel.ru
+							</a>
+						</div>
+
+						<div class="contact__info">
+							<h3 class="contact__info-title">
+								Часы работы
+							</h3>
+
+							<p class="contact__info-text">
+								Понедельник — пятница: 8:00–17:00 <br>
+								Суббота и воскресенье: выходной
+							</p>
+						</div>
+
+					</div>
+
+					<div class="contact__right">
+						<h3 class="contact__form-title">
+							Если у вас появились ещё вопросы, мы можем ответить на них прямо сейчас.
+						</h3>
+
+						<form class="contact__form">
+							<div class="contact__body">
+								<div class="contact__field field">
+									<label class="field__label" for="name">Имя</label>
+									<input class="field__input" id="name" name="name" placeholder="Иванов Иван Иванович" />
+								</div>
+								<div class="contact__field field">
+									<label class="field__label" for="email">Почта*</label>
+									<input class="field__input" id="email" name="email" placeholder="test@test.ru" type="email"
+										required />
+								</div>
+								<div class="contact__field field">
+									<label class="field__label" for="phone">Телефон*</label>
+									<input class="field__input" id="phone" name="phone" placeholder="Телефон" type="phone"
+										required />
+								</div>
+								<!-- <div class="contact__field field">
+									<label class="field__label" for="message">Вопрос*</label>
+									<textarea class="field__input field__input--textarea" id="message" name="message"
+										placeholder="Хочется спросить про..." required></textarea>
+								</div> -->
+							</div>
+							<button class="contact__button button" type="submit">
+								Отправить
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- END CONTACT -->
+
+	</main>
+	<!-- END MAIN -->
+
+	<!-- START FOOTER -->
+	<!-- END FOOTER -->
+
+	<!-- START BURGER -->
+	<dialog class="mobile-overlay visible-mobile" id="mobileOverlay">
+		<form class="mobile-overlay__close-button-wrapper" method="dialog">
+			<button class="mobile-overlay__close-button cross-button" type="submit">
+				<span class="visually-hidden">Close navigation menu</span>
+			</button>
+		</form>
+		<div class="mobile-overlay__body">
+			<ul class="mobile-overlay__list dropdown__mobile" id="dropdown__mobile">
+				<li class="mobile-overlay__item dropdown__mobile-item">
+					<div class="mobile-overlay__link dropdown__mobile-link" >
+						Услуги
+						<!-- <i class="fa fa-chevron-down"></i> -->
+					</div>
+					<ul class="dropdown__submenu-list">
+						<li class="dropdown__submenu-item">
+							<a class="dropdown__submenu-link" href="#">Услуга 1</a>
+						</li>
+						<li class="dropdown__submenu-item">
+							<a class="dropdown__submenu-link" href="#">Услуга 1</a>
+						</li>
+						<li class="dropdown__submenu-item">
+							<a class="dropdown__submenu-link" href="#">Услуга 1</a>
+						</li>
+					</ul>
+				</li>
+				<li class="mobile-overlay__item">
+					<a class="mobile-overlay__link" href="/">Контакты</a>
+				</li>
+				<li class="mobile-overlay__item">
+					<a class="mobile-overlay__link" href="/">Документы</a>
+				</li>
+				<li class="mobile-overlay__item">
+					<a class="mobile-overlay__link" href="/">О нас</a>
+				</li>
+				<li class="mobile-overlay__item">
+					<a class="mobile-overlay__link" href="/">Противодействие коррупции</a>
+				</li>
+
+				<li class="mobile-overlay__item">
+					<a class="mobile-overlay__link" href="/">Связаться</a>
+				</li>
+			</ul>
+		</div>
+	</dialog>
+	<!-- END BURGER -->
+
+
+
+	<!-- JS -->
+	<script src="./script/main.js"></script>
+	<!-- JS -->
+
+</body>
+
+</html>

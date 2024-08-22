@@ -1,0 +1,18 @@
+// размещаем   все импорты
+@import "./component/fonts", "./component/media", "./component/mixins", "./component/reset", "./component/vars", "./component/globals", "./component/utils";
+
+//Размещаем блок
+
+@import "./block/header";
+@import "./block/dropdown";
+@import "./block/dropdowm_mobile";
+@import "./block/mobile-overlay";
+@import "./block/button";
+@import "./block/hero";
+@import "./block/banner";
+@import "./block/services";
+@import "./block/about";
+@import "./block/questions";
+@import "./block/contact";
+@import "./block/field";
+@import "./block/usluga";

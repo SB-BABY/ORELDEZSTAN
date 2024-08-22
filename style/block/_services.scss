@@ -1,0 +1,46 @@
+.services{
+	padding-top: 100px;
+
+	&__title{
+		@include title;
+	}
+
+	&__list{
+		margin-top: 50px;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 40px;
+
+		@include tablet{
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		@include mobile{
+			grid-template-columns: repeat(1, 1fr);
+		}
+	}
+
+	&__item{
+		background-color: var(--color-accent-light);
+		padding: 25px;
+		border-radius: var(--border-radius-small);
+
+		@include shadow;
+	}
+
+	&__img{
+		border-radius: var(--border-radius-small);
+	}
+
+	&__item-title{
+		padding-top: 20px;
+	}
+
+	&__item-descr{
+		padding-top: 20px;
+	}
+	&__item-btn{
+		margin-top: 20px;
+	}
+
+}

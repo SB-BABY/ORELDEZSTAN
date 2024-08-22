@@ -1,0 +1,64 @@
+.questions {
+	padding-top: 100px;
+
+	&__title {
+		@include title;
+	}
+
+	&__list {
+		margin-top: 40px;
+		display: flex;
+		flex-direction: column;
+		row-gap: 20px;
+	}
+
+	&__item {
+		position: relative;
+		background-color: var(--color-accent-light);
+		border-radius: var(--border-radius-small);
+		border: var(--border);
+		padding: 20px 20px 20px 40px;
+	}
+
+	&__item-text {
+		font-size: 20px;
+		margin-top: 20px;
+
+		display: none;
+		transition: all 0.3s ease;
+	}
+
+	&__item-accordeon {
+		position: absolute;
+		width: 20px;
+		height: 20px;
+		background-color: var(--color-accent);
+		top: 30px;
+		left: 10px;
+		transform: translateY(-2px);
+		border-radius: 50%;
+
+		cursor: pointer;
+
+		&::after {
+			content: "+";
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			color: var(--color-light);
+			transition: all 0.3s ease; /* Плавная анимация трансформации */
+		}
+
+		&.active {
+			transform: rotate(45deg); /* Поворот на 180 градусов для превращения плюса в минус */
+			transition: all 0.3s ease;
+		}
+	}
+}
+
+.active {
+	display: block;
+	transition: all 0.3s ease;
+}
+

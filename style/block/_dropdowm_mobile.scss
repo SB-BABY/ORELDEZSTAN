@@ -1,0 +1,29 @@
+.dropdown__mobile {
+	width: 100%;
+	&-link {
+		display: block;
+		position: relative;
+		-webkit-transition: all 0.4s ease;
+		-o-transition: all 0.4s ease;
+		transition: all 0.4s ease;
+	}
+}
+
+.dropdown__submenu-list {
+	display: none;
+	background-color: var(--color-accent);
+	color: var(--color-light);
+}
+
+.dropdown__submenu-link {
+	display: block;
+	text-decoration: none;
+	// padding: 12px;
+	-webkit-transition: all 0.25s ease;
+	-o-transition: all 0.25s ease;
+	transition: all 0.25s ease;
+	&:hover {
+		background-color: var(--color-accent-light);
+		color: var(--color-accent);
+	}
+}

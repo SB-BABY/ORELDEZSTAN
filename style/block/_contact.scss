@@ -1,0 +1,93 @@
+.contact {
+	padding-top: 100px;
+	padding-bottom: 100px;
+	position: relative;
+	overflow-x: hidden;
+
+	&__form,
+	&__body {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__form {
+		@include tablet-above {
+			max-width: 556px;
+		}
+
+		@include mobile-above {
+			row-gap: 40px;
+		}
+	}
+
+	&__body {
+		row-gap: 25px;
+
+		@include mobile {
+			row-gap: 20px;
+			margin-bottom: 30px;
+			border-radius: 0 0 var(--border-radius-large) var(--border-radius-large);
+		}
+	}
+
+	// ME
+
+	&__title {
+		@include title;
+	}
+
+	&__content {
+		margin-top: 40px;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		align-items: center;
+		column-gap: 20px;
+
+		@include tablet{
+			grid-template-columns: 1fr;
+			row-gap: 40px;
+		}
+	}
+
+	&__left{
+		display: flex;
+		flex-direction: column;
+		row-gap: 40px;
+
+		order: 0;
+
+		@include tablet{
+			order: 1;
+			text-align: center;
+		}
+	}
+
+	&__info-title{
+		font-size: 18px;
+		color: var(--color-dark);
+	}
+
+	&__info-text{
+		font-size: 30px;
+		font-weight: bold;
+		
+	}
+
+	&__right{
+		background-color: var(--color-accent-light);
+		border-radius: var(--border-radius-small);
+		padding: 20px;
+	
+		@include shadow;
+
+		order: 1;
+
+		@include tablet{
+			order: 0;
+		}
+	}
+
+	&__form{
+		margin-top: 20px;
+	}
+}

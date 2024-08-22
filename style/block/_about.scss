@@ -1,0 +1,43 @@
+.about{
+	padding-top: 100px;
+
+	&__title{
+		@include title;
+	}
+
+	&__content{
+		margin-top: 40px;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		column-gap: 20px;
+		@include tablet{
+			display: block;
+			font-size: 24px;
+		}
+	}
+
+	&__left{
+		display: flex;
+		flex-direction: column;
+		row-gap: 20px;
+	}
+
+	&__text-list{
+		list-style: decimal;
+		list-style-position:inside;
+		display: flex;
+		flex-direction: column;
+		row-gap: 20px;
+	}
+
+	&__right{
+		@include tablet{
+			display: none;
+		}
+	}
+
+	&__img{
+		border-radius: var(--border-radius-small);
+	}
+
+}
