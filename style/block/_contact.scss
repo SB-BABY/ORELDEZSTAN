@@ -4,6 +4,16 @@
 	position: relative;
 	overflow-x: hidden;
 
+	&__info{
+		margin-top: 50px;
+		@include fluid-text(32, 18);
+
+		&-link{
+			font-weight: bold;
+			text-decoration: underline;
+		}
+	}
+
 	&__form,
 	&__body {
 		display: flex;
