@@ -5,8 +5,11 @@
 	overflow-x: hidden;
 
 	&__info{
-		margin-top: 50px;
 		@include fluid-text(32, 18);
+
+		&-tell{
+			margin-top: 50px;
+		}
 
 		&-link{
 			font-weight: bold;

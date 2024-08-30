@@ -209,6 +209,9 @@ body {
   color: var(--color-accent);
   background-color: var(--color-light);
 }
+body.modal-open {
+  overflow: hidden;
+}
 
 a,
 button,
@@ -644,6 +647,9 @@ h4,
   rotate: -45deg;
 }
 
+.hero {
+  padding-top: 50px;
+}
 .hero__container {
   background-image: url("./../img/HERO/HERO.png");
   background-repeat: no-repeat;
@@ -657,7 +663,6 @@ h4,
 }
 .hero__left {
   width: 50%;
-  padding-top: 100px;
   padding-bottom: 50px;
 }
 @media (max-width: 1023px) {
@@ -859,8 +864,10 @@ h4,
   overflow-x: hidden;
 }
 .contact__info {
-  margin-top: 50px;
   font-size: clamp(18px, 2.2222222222vw, 32px);
+}
+.contact__info-tell {
+  margin-top: 50px;
 }
 .contact__info-link {
   font-weight: bold;
@@ -1149,4 +1156,41 @@ h4,
 }
 .about__img {
   border-radius: var(--border-radius-small);
+}
+
+.modal {
+  display: none; /* Скрыто по умолчанию */
+  position: fixed;
+  z-index: 1000; /* На переднем плане */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный черный фон */
+  /* Кнопка для закрытия модального окна */
+}
+.modal__content {
+  background-color: #fefefe;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: var(--border-radius-small);
+  padding: 20px;
+  border: var(--border);
+  width: 80%;
+  max-width: 500px; /* Максимальная ширина */
+}
+.modal .close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.modal .close:hover,
+.modal .close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }

@@ -1,4 +1,5 @@
 .hero{
+	padding-top: 50px;
 	&__container{
 		// display: grid;
 		// grid-template-columns: repeat(2, 1fr);
@@ -16,7 +17,6 @@
 
 	&__left{
 		width: 50%;
-		padding-top: 100px;
 		padding-bottom: 50px;
 		@include tablet{
 			width: 100%;
