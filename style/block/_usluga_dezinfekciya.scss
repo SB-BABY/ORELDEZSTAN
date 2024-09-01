@@ -1,0 +1,28 @@
+.temp-usluga{
+    margin-top: 100px;
+    padding-bottom: 100px;
+
+    &__title{
+        @include title;
+    }
+
+    &__content{
+        margin-top: 50px;
+    }
+
+    &__photo{
+        margin-top: 50px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 50px;
+
+        img{
+            @include shadow;
+            border-radius: var(--border-radius-small);
+        }
+
+        @include mobile {
+			grid-template-columns: repeat(1, 1fr);
+		}
+    }
+}

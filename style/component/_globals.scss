@@ -10,6 +10,27 @@
 .none {
 	display: none;
 }
+
+// СКРОЛЛБАР
+* {
+	// scrollbar-width: 100px;
+	scrollbar-color: var(--color-accent) var(--color-accent-light);
+}
+
+/* для Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+	height: 12px;
+	width: 12px;
+}
+*::-webkit-scrollbar-track {
+	background: var(--color-accent-light);
+}
+*::-webkit-scrollbar-thumb {
+	background-color: var(--color-accent);
+	border-radius: 5px;
+	border: 3px solid var(--color-accent-light);
+}
+
 body {
 	@include fluid-text(20, 18);
 	// указываем ширину для большинства текстовых элементов
