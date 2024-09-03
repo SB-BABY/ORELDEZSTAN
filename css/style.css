@@ -325,7 +325,7 @@ h4,
   font-family: var(--font-family-bold);
   gap: 20px;
   text-transform: uppercase;
-  font-size: clamp(14px, 1.3888888889vw, 20px);
+  font-size: clamp(8px, 0.9722222222vw, 14px);
 }
 @media (max-width: 1023px) {
   .header__logo {
@@ -693,6 +693,7 @@ h4,
 .hero__title {
   font-weight: bold;
   text-transform: uppercase;
+  font-size: clamp(30px, 3.4722222222vw, 50px);
 }
 .hero__text {
   margin-top: 20px;
@@ -710,8 +711,8 @@ h4,
   color: var(--color-accent);
 }
 .banner__container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   padding-top: 25px;
   padding-bottom: 25px;
@@ -720,6 +721,7 @@ h4,
   .banner__container {
     display: flex;
     flex-direction: column;
+    text-align: center;
     gap: 20px;
   }
 }
@@ -728,10 +730,12 @@ h4,
   font-weight: bold;
   text-transform: uppercase;
 }
-.banner__tel {
-  font-size: 36px;
+.banner__phones {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  font-size: clamp(10px, 2.0833333333vw, 30px);
 }
-
 .services {
   padding-top: 100px;
 }
@@ -758,8 +762,10 @@ h4,
   }
 }
 .services__item {
+  position: relative;
   background-color: var(--color-accent-light);
   padding: 25px;
+  padding-bottom: 80px;
   border-radius: var(--border-radius-small);
   box-shadow: -4px 4px 8px 0px rgba(0, 0, 0, 0.2);
 }
@@ -771,6 +777,11 @@ h4,
 }
 .services__item-descr {
   padding-top: 20px;
+}
+.services__item-btns {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
 }
 .services__item-btn {
   margin-top: 20px;
@@ -884,7 +895,12 @@ h4,
   overflow-x: hidden;
 }
 .contact__info {
-  font-size: clamp(18px, 2.2222222222vw, 32px);
+  font-size: clamp(24px, 2.2222222222vw, 32px);
+}
+@media (max-width: 1023px) {
+  .contact__info {
+    text-align: center;
+  }
 }
 .contact__info-tell {
   margin-top: 50px;

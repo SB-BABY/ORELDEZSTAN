@@ -3,14 +3,17 @@
 	color: var(--color-accent);
 
 	&__container{
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
+		// display: grid;
+		// grid-template-columns: repeat(3, 1fr);
+		display: flex;
+		justify-content: space-between;
 		align-items: center;
 		padding-top: 25px;
 		padding-bottom: 25px;
 		@include tablet{
 			display: flex;
 			flex-direction: column;
+			text-align: center;
 			gap: 20px;
 		} 
 	}
@@ -21,7 +24,14 @@
 		text-transform: uppercase;
 	}
 
+	&__phones{
+		display: flex;
+		flex-direction: column;
+		row-gap: 10px;
+		@include fluid-text(30,10)
+	}
+
 	&__tel{
-		font-size: 36px;
+		// font-size: 36px;
 	}
 }

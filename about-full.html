@@ -18,7 +18,8 @@
 		<div class="header__container container">
 			<a href="/" class="header__logo logo">
 				<img src="./img/HEADER/logo.png" alt="Logo" class="logo__image" width="40" height="40" loading="lazy">
-				Орловская дезинфекционная станция
+				<!-- Орловская дезинфекционная станция -->
+				Бюджетное учреждение здравоохранения <br> Орловской области "Орловская дезинфекционная станция"
 			</a>
 
 			<nav class="header__menu hidden-mobile">
@@ -31,7 +32,7 @@
 							<!-- <span class="material-symbols-outlined expand-icon"> expand_more </span> -->
 						</a>
 
-						<div class="dropdown-content" id="myDropdown">
+						<!-- <div class="dropdown-content" id="myDropdown">
 							<div class="nested-dropdown">
 								<a href="#" data-service="dezinfektsiya" class="nested-link">
 									Дезинфекция
@@ -66,15 +67,15 @@
 								</div>
 							</div>
 
-						</div>
+						</div> -->
 					</li>
 					</li>
 					<li class="header__menu-item"><a href="contact.html" class="header__menu-link">Контакты</a></li>
 					<li class="header__menu-item"><a href="documents.html" class="header__menu-link">Документы</a></li>
-					<li class="header__menu-item"><a href="about.html" class="header__menu-link">О нас</a></li>
+					<li class="header__menu-item"><a href="about-full.html" class="header__menu-link">О нас</a></li>
 					<li class="header__menu-item"><a href="korupzia.html" class="header__menu-link">Противодействие
 							коррупции</a></li>
-					<li class="header__menu-item"><a href="#" class="header__menu-link">Связаться</a></li>
+					<li class="header__menu-item"><a href="#" class="header__menu-link open-modal">Связаться</a></li>
 				</ul>
 			</nav>
 
@@ -208,8 +209,38 @@
 
 
 
+	<!-- START MODAL -->
+	<div id="contactModal" class="modal">
+		<div class="modal__content">
+			<span class="close">&times;</span>
+			<form class="contact__form">
+				<div class="contact__body">
+					<div class="contact__field field">
+						<label class="field__label" for="name">Имя</label>
+						<input class="field__input" id="name" name="name" placeholder="Иванов Иван Иванович" />
+					</div>
+					<div class="contact__field field">
+						<label class="field__label" for="email">Почта*</label>
+						<input class="field__input" id="email" name="email" placeholder="test@test.ru" type="email"
+							required />
+					</div>
+					<div class="contact__field field">
+						<label class="field__label" for="phone">Телефон*</label>
+						<input class="field__input" id="phone" name="phone" placeholder="Телефон" type="phone"
+							required />
+					</div>
+				</div>
+				<button class="contact__button button" type="submit">Отправить</button>
+			</form>
+		</div>
+	</div>
+	<!-- END MODAL -->
+
+
+
 	<!-- JS -->
 	<script src="./script/main.js"></script>
+	<script src="./script/modal.js"></script>
 	<!-- JS -->
 
 </body>

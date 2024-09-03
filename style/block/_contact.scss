@@ -5,7 +5,10 @@
 	overflow-x: hidden;
 
 	&__info{
-		@include fluid-text(32, 18);
+		@include fluid-text(32, 24);
+		@include tablet{
+			text-align: center;
+		}
 
 		&-tell{
 			margin-top: 50px;

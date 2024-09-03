@@ -16,7 +16,7 @@
 		font-family: var(--font-family-bold);
 		gap: 20px;
 		text-transform: uppercase;
-		@include fluid-text(20, 14);
+		@include fluid-text(14, 8);
 		@include tablet {
 			gap: 10px;
 		}
