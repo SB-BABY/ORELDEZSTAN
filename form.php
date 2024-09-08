@@ -1,4 +1,4 @@
-<form class="contact__form" action="send_mail.php" method="post">
+<form class="contact__form" id="contactForm">
     <div class="contact__body">
         <div class="contact__field field">
             <label class="field__label" for="name">Имя</label>
