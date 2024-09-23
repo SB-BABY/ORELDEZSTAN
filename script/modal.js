@@ -20,8 +20,6 @@ openModalButtons.forEach(button => {
 span.onclick = function () {
     modal.style.display = 'none';
     body.classList.remove('modal-open'); // Разблокируем прокрутку страницы
-
-    // Сбрасываем форму и сообщение после закрытия окна
     resetModal();
 }
 
@@ -30,41 +28,121 @@ window.onclick = function (event) {
     if (event.target === modal) {
         modal.style.display = 'none';
         body.classList.remove('modal-open'); // Разблокируем прокрутку страницы
-
-        // Сбрасываем форму и сообщение после закрытия окна
         resetModal();
     }
 }
 
-// Обрабатываем отправку формы
-form.addEventListener('submit', function(event) {
-    event.preventDefault(); // Отключаем стандартную отправку формы
+// Валидация формы
+const formArr = Array.from(form.elements);
+const validFormArr = [];
+const button = form.querySelector('button[type="submit"]');
 
-    // Собираем данные формы
-    const formData = new FormData(this);
-
-    // Отправляем данные через AJAX
-    fetch('send_mail.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.text())
-    .then(data => {
-        // Скрываем форму и показываем сообщение об успешной отправке
-        form.style.display = 'none';
-        modalMessage.textContent = data;
-        resultMessage.style.display = 'block';
-    })
-    .catch(error => {
-        form.style.display = 'none';
-        modalMessage.textContent = 'Ошибка при отправке сообщения. Попробуйте снова.';
-        resultMessage.style.display = 'block';
-    });
+// Подготавливаем элементы формы с атрибутом data-reg для валидации
+formArr.forEach((el) => {
+    if (el.hasAttribute("data-reg")) {
+        el.setAttribute("is-valid", "0");
+        validFormArr.push(el);
+    }
 });
 
-// Функция для сброса формы и сообщения
-function resetModal() {
-    form.style.display = 'block'; // Показываем форму снова
-    resultMessage.style.display = 'none'; // Скрываем сообщение
-    form.reset(); // Сбрасываем поля формы
+// Обработчики для валидации полей при вводе и при отправке формы
+form.addEventListener("input", inputHandler);
+form.addEventListener("submit", formCheck);
+
+function inputHandler({ target }) {
+    if (target.hasAttribute("data-reg")) {
+        inputCheck(target);
+    }
 }
+
+function inputCheck(el) {
+    const inputValue = el.value;
+    const inputReg = el.getAttribute("data-reg");
+    const reg = new RegExp(inputReg);
+
+    if (reg.test(inputValue)) {
+        el.setAttribute("is-valid", "1");
+        el.style.border = "2px solid rgb(0, 196, 0)"; // Зеленая рамка при успешной валидации
+    } else {
+        el.setAttribute("is-valid", "0");
+        el.style.border = "2px solid rgb(255, 0, 0)"; // Красная рамка при ошибке
+    }
+}
+
+function formCheck(e) {
+    e.preventDefault();
+    const allValid = validFormArr.every(el => el.getAttribute("is-valid") === "1");
+
+    if (!allValid) {
+        modalMessage.textContent = "Пожалуйста, заполните все поля корректно.";
+        modalMessage.style.color = "red"; // Сообщение об ошибке
+        return;
+    }
+
+    formSubmit();
+}
+
+async function formSubmit() {
+    const data = new FormData(form);
+    try {
+        const response = await sendData(data);
+        if (response.ok) {
+            let result = await response.json();
+            modalMessage.textContent = result.message;
+            modalMessage.style.color = "green"; // Сообщение об успешной отправке
+        } else {
+            modalMessage.textContent = "Ошибка отправки данных. Код ошибки: " + response.status;
+            modalMessage.style.color = "red"; // Сообщение об ошибке сервера
+        }
+        formReset(); // Сброс формы после отправки
+    } catch (error) {
+        modalMessage.textContent = "Произошла ошибка. Попробуйте позже.";
+        modalMessage.style.color = "red"; // Сообщение об общей ошибке
+    }
+}
+
+// Функция отправки данных на сервер
+async function sendData(data) {
+    return await fetch("send_mail.php", {
+        method: "POST",
+        body: data,
+    });
+}
+
+// Сброс формы
+function formReset() {
+    form.reset(); // Сбрасываем поля формы
+    validFormArr.forEach((el) => {
+        el.setAttribute("is-valid", "0");
+        el.style.border = "none"; // Убираем рамку
+    });
+}
+
+// Сброс модального окна
+function resetModal() {
+    form.style.display = 'block'; // Показываем форму
+    resultMessage.style.display = 'none'; // Скрываем сообщение
+    modalMessage.textContent = ''; // Очищаем сообщение
+}
+
+async function formSubmit() {
+    const data = new FormData(form);
+    try {
+        const response = await sendData(data);
+        if (response.ok) {
+            let result = await response.json();
+            modalMessage.textContent = result.message;
+            modalMessage.style.color = "green"; // Сообщение об успешной отправке
+            form.style.display = 'none'; // Скрываем форму
+            resultMessage.style.display = 'block'; // Показываем сообщение
+        } else {
+            modalMessage.textContent = "Ошибка отправки данных. Код ошибки: " + response.status;
+            modalMessage.style.color = "red"; // Сообщение об ошибке сервера
+        }
+        formReset(); // Сброс формы после отправки
+    } catch (error) {
+        modalMessage.textContent = "Произошла ошибка. Попробуйте позже.";
+        modalMessage.style.color = "red"; // Сообщение об общей ошибке
+    }
+}
+

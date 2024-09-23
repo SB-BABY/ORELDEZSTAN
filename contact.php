@@ -14,7 +14,7 @@
 <body>
 
 	<!-- START HEADER -->
-	<?php include ('header.php'); ?>
+	<?php include('header.php'); ?>
 	<!-- END HEADER -->
 
 	<!-- START MAIN -->
@@ -49,15 +49,15 @@
 					<p>
 						Для подачи заявок на профилатическую или заключительную дезинфекцию помещений, обработку
 						автотранспорта
-						или обработку помещений после трупа: <br> <a href="#" class="contact__info-link">59-15-53</a> 
+						или обработку помещений после трупа: <br> <a href="#" class="contact__info-link">59-15-53</a>
 					</p>
 
 					<p>
-						Приемная: <br> <a href="#" class="contact__info-link">59-11-80</a> 
+						Приемная: <br> <a href="#" class="contact__info-link">59-11-80</a>
 					</p>
 
 					<p>
-						Факс: <br> <a href="#" class="contact__info-link">59-11-80</a> или <a href="#" class="contact__info-link">75-02-82</a> 
+						Факс: <br> <a href="#" class="contact__info-link">59-11-80</a> или <a href="#" class="contact__info-link">75-02-82</a>
 					</p>
 				</div>
 
@@ -116,33 +116,48 @@
 							Если у вас появились вопросы, мы оперативно ответим на них.
 						</h3>
 
-						<form class="contact__form">
-							<div class="contact__body">
-								<div class="contact__field field">
-									<label class="field__label" for="name">Имя</label>
-									<input class="field__input" id="name" name="name"
-										placeholder="Иванов Иван Иванович" />
-								</div>
-								<div class="contact__field field">
-									<label class="field__label" for="email">Почта*</label>
-									<input class="field__input" id="email" name="email" placeholder="test@test.ru"
-										type="email" required />
-								</div>
-								<div class="contact__field field">
-									<label class="field__label" for="phone">Телефон*</label>
-									<input class="field__input" id="phone" name="phone" placeholder="Телефон"
-										type="phone" required />
-								</div>
-								<!-- <div class="contact__field field">
-									<label class="field__label" for="message">Вопрос*</label>
-									<textarea class="field__input field__input--textarea" id="message" name="message"
-										placeholder="Хочется спросить про..." required></textarea>
-								</div> -->
+						<form class="contact__form" id="contactForm" action="send_mail.php" name="form" method="POST">
+							<h3 class="contact__form-title">
+								Если у вас появились вопросы, мы оперативно ответим на них.
+							</h3>
+							<div class="contact__field field">
+								<label class="field__label" for="name">Имя</label>
+								<input
+									class="field__input"
+									id="name"
+									name="name"
+									type="text"
+									placeholder="Иванов Иван Иванович"
+									required />
 							</div>
-							<button class="contact__button button" type="submit">
+							<div class="contact__field field">
+								<label class="field__label" for="phone">Телефон*</label>
+								<input
+									class="field__input"
+									id="phone"
+									name="phone"
+									type="text"
+									placeholder="Телефон"
+									required
+									data-reg="^((\+7|7|8)+([0-9]){10})$" />
+							</div>
+							<div class="contact__field field">
+								<label class="field__label" for="message">Вопрос*</label>
+								<textarea
+									class="field__input field__input--textarea"
+									id="message"
+									name="message"
+									placeholder="Хочется спросить про..."
+									required></textarea>
+							</div>
+							<button class="contact__button button" type="submit" id="form_button">
 								Отправить
 							</button>
 						</form>
+
+						<div id="resultMessage" style="display:none;">
+							Спасибо! Ваше сообщение отправлено.
+						</div>
 					</div>
 				</div>
 			</div>
@@ -156,11 +171,11 @@
 	<!-- END FOOTER -->
 
 	<!-- START BURGER -->
-	<?php include ('burger.php'); ?>
+	<?php include('burger.php'); ?>
 	<!-- END BURGER -->
 
 	<!-- START MODAL -->
-	<?php include ('modal.php'); ?>
+	<?php include('modal.php'); ?>
 	<!-- END MODAL -->
 
 

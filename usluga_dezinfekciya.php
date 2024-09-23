@@ -14,7 +14,7 @@
 <body>
 
 	<!-- START HEADER -->
-	<?php include ('header.php'); ?>
+	<?php include('header.php'); ?>
 	<!-- END HEADER -->
 
 	<!-- START MAIN -->
@@ -57,15 +57,48 @@
 							дoлгoсрoчнoе сoтрудничествo и взаимoвыгoдные oтнoшения.
 						</p>
 					</div>
+					<!-- <div class="temp-usluga__photo">
+						<img src="./img/SERVICES/1.png" alt="дезинфекция">
+						<img src="./img/SERVICES/1.png" alt="дезинфекция">
+						<img src="./img/SERVICES/1.png" alt="дезинфекция">
+						<img src="./img/SERVICES/1.png" alt="дезинфекция">
+					</div> -->
 
-					<div class="temp-usluga__photo">
-						<img src="./img/SERVICES/1.png" alt="дезинфекция">
-						<img src="./img/SERVICES/1.png" alt="дезинфекция">
-						<img src="./img/SERVICES/1.png" alt="дезинфекция">
-						<img src="./img/SERVICES/1.png" alt="дезинфекция">
+				</div>
+
+				<div class="temp-usluga__form">
+					<div class="temp-usluga__form-left">
+						<ul class="temp-usluga__links">
+							<span>Услуги дезинфекции:</span>
+							<li class="temp-usluga__link">
+								<a href="usluga_dezinfekciya-auto.php" class="temp-usluga__href">
+									Дезинфекция автотранспорта
+								</a>
+							</li>
+
+							<li class="temp-usluga__link">
+								<a href="usluga_dezinfekciya-trash.php" class="temp-usluga__href">
+									Дeзинфeкция ствoлoв муcoрoпрoвoдa
+								</a>
+							</li>
+
+							<li class="temp-usluga__link">
+								<a href="usluga_dezinfekciya-room.php" class="temp-usluga__href">
+									Дезинфекция квартиры после трупа
+								</a>
+							</li>
+						</ul>
 					</div>
 
-					
+					<div class="temp-usluga__form-right">
+						<h3 class="contact__form-title">
+							Если у вас появились вопросы, мы оперативно ответим на них.
+						</h3>
+						<!-- START FORM -->
+						<?php include('form.php'); ?>
+						<!-- START FORM -->
+					</div>
+
 				</div>
 
 
@@ -80,11 +113,11 @@
 	<!-- END FOOTER -->
 
 	<!-- START BURGER -->
-	<?php include ('burger.php'); ?>
+	<?php include('burger.php'); ?>
 	<!-- END BURGER -->
 
 	<!-- START MODAL -->
-	<?php include ('modal.php'); ?>
+	<?php include('modal.php'); ?>
 	<!-- END MODAL -->
 
 

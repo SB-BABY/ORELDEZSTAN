@@ -14,7 +14,7 @@
 <body>
 
 	<!-- START HEADER -->
-	<?php include ('header.php'); ?>
+	<?php include('header.php'); ?>
 	<!-- END HEADER -->
 
 	<!-- START MAIN -->
@@ -61,9 +61,15 @@
 						Дезинфекция автотранспорта
 					</h3>
 
-					<a href="#" class="button-small usluga__item-btn open-modal">
-						Заказать
-					</a>
+					<div class="usluga__item-btns">
+						<a href="#" class="button-small usluga__item-btn open-modal">
+							Заказать
+						</a>
+
+						<a href="usluga_dezinfekciya-auto.php" class="button-small usluga__item-btn">
+							Подробнее
+						</a>
+					</div>
 				</li>
 
 				<li class="usluga__item" data-service="dezinsektsiya">
@@ -72,9 +78,32 @@
 						Педикулёз
 					</h3>
 
-					<a href="#" class="button-small usluga__item-btn open-modal">
-						Заказать
-					</a>
+					<div class="usluga__item-btns">
+						<a href="#" class="button-small usluga__item-btn open-modal">
+							Заказать
+						</a>
+
+						<a href="usluga_dezinsekciya-pedikulez.php" class="button-small usluga__item-btn">
+							Подробнее
+						</a>
+					</div>
+				</li>
+
+				<li class="usluga__item" data-service="dezinsektsiya">
+
+					<h3 class="usluga__item-title">
+						Дезинcекция
+					</h3>
+
+					<div class="usluga__item-btns">
+						<a href="#" class="button-small usluga__item-btn open-modal">
+							Заказать
+						</a>
+
+						<a href="usluga_dezinsekciya.php" class="button-small usluga__item-btn">
+							Подробнее
+						</a>
+					</div>
 				</li>
 
 				<li class="usluga__item" data-service="deratizatsiya">
@@ -83,9 +112,15 @@
 						Дератизация
 					</h3>
 
-					<a href="#" class="button-small usluga__item-btn open-modal">
-						Заказать
-					</a>
+					<div class="usluga__item-btns">
+						<a href="#" class="button-small usluga__item-btn open-modal">
+							Заказать
+						</a>
+
+						<a href="usluga_deratizaciya.php" class="button-small usluga__item-btn">
+							Подробнее
+						</a>
+					</div>
 				</li>
 
 				<li class="usluga__item" data-service="dezinfektsiya">
@@ -94,9 +129,15 @@
 						Дезинфекция квартиры после трупа
 					</h3>
 
-					<a href="#" class="button-small usluga__item-btn open-modal">
-						Заказать
-					</a>
+					<div class="usluga__item-btns">
+						<a href="#" class="button-small usluga__item-btn open-modal">
+							Заказать
+						</a>
+
+						<a href="usluga_dezinfekciya-room.php" class="button-small usluga__item-btn">
+							Подробнее
+						</a>
+					</div>
 				</li>
 
 				<li class="usluga__item" data-service="dezinfektsiya">
@@ -105,9 +146,32 @@
 						Дeзинфeкция ствoлoв муcoрoпрoвoдa
 					</h3>
 
-					<a href="#" class="button-small usluga__item-btn open-modal">
-						Заказать
-					</a>
+					<div class="usluga__item-btns">
+						<a href="#" class="button-small usluga__item-btn open-modal">
+							Заказать
+						</a>
+
+						<a href="usluga_dezinfekciya-trash.php" class="button-small usluga__item-btn">
+							Подробнее
+						</a>
+					</div>
+				</li>
+
+				<li class="usluga__item" data-service="dezinfektsiya">
+
+					<h3 class="usluga__item-title">
+						Дeзинфeкция 
+					</h3>
+
+					<div class="usluga__item-btns">
+						<a href="#" class="button-small usluga__item-btn open-modal">
+							Заказать
+						</a>
+
+						<a href="usluga_dezinfekciya.php" class="button-small usluga__item-btn">
+							Подробнее
+						</a>
+					</div>
 				</li>
 
 			</ul>
@@ -121,11 +185,11 @@
 	<!-- END FOOTER -->
 
 	<!-- START BURGER -->
-	<?php include ('burger.php'); ?>
+	<?php include('burger.php'); ?>
 	<!-- END BURGER -->
 
 	<!-- START MODAL -->
-	<?php include ('modal.php'); ?>
+	<?php include('modal.php'); ?>
 	<!-- END MODAL -->
 
 

@@ -10,6 +10,49 @@
         margin-top: 50px;
     }
 
+    &__form{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: flex-start;
+        margin-top: 50px;
+        @include tablet{
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            row-gap: 50px;
+            text-align: center;
+        }
+
+        &-right{
+            background-color: var(--color-accent-light);
+            border-radius: var(--border-radius-small);
+            padding: 25px;
+            @include shadow;
+        }
+    }
+
+    &__links{
+        display: inline-flex;
+        justify-content: center;
+        flex-direction: column;
+        span{
+            font-weight: bold;
+            @include fluid-text(30, 18);
+        }
+    }
+
+    &__link{
+        // display: inline-block;
+        margin-top: 25px;
+        border: var(--border);
+        border-radius: var(--border-radius-small);
+        padding: 10px;
+
+        &:hover{
+            background-color: var(--color-accent);
+            color: var(--color-light);
+        }
+    }
+
     &__photo{
         margin-top: 50px;
         display: grid;

@@ -89,7 +89,7 @@
 								Заказать
 							</a>
 
-							<a href="usluga_dezinfekciya.html" class="button-small services__item-btn">
+							<a href="usluga_dezinfekciya.php" class="button-small services__item-btn">
 								Подробнее
 							</a>
 						</div>
@@ -113,7 +113,7 @@
 								Заказать
 							</a>
 
-							<a href="#" class="button-small services__item-btn">
+							<a href="usluga_deratizaciya.php" class="button-small services__item-btn">
 								Подробнее
 							</a>
 						</div>
@@ -135,7 +135,7 @@
 								Заказать
 							</a>
 
-							<a href="#" class="button-small services__item-btn">
+							<a href="usluga_dezinsekciya.php" class="button-small services__item-btn">
 								Подробнее
 							</a>
 						</div>
@@ -337,12 +337,51 @@
 					</div>
 
 					<div class="contact__right">
-						<h3 class="contact__form-title">
-							Если у вас появились вопросы, мы оперативно ответим на них.
-						</h3>
+
 
 						<!-- START FORM -->
-						<?php include('form.php'); ?>
+						<form class="contact__form" id="contactForm" action="send_mail.php" name="form" method="POST">
+							<h3 class="contact__form-title">
+								Если у вас появились вопросы, мы оперативно ответим на них.
+							</h3>
+							<div class="contact__field field">
+								<label class="field__label" for="name">Имя</label>
+								<input
+									class="field__input"
+									id="name"
+									name="name"
+									type="text"
+									placeholder="Иванов Иван Иванович"
+									required />
+							</div>
+							<div class="contact__field field">
+								<label class="field__label" for="phone">Телефон*</label>
+								<input
+									class="field__input"
+									id="phone"
+									name="phone"
+									type="text"
+									placeholder="Телефон"
+									required
+									data-reg="^((\+7|7|8)+([0-9]){10})$" />
+							</div>
+							<div class="contact__field field">
+								<label class="field__label" for="message">Вопрос*</label>
+								<textarea
+									class="field__input field__input--textarea"
+									id="message"
+									name="message"
+									placeholder="Хочется спросить про..."
+									required></textarea>
+							</div>
+							<button class="contact__button button" type="submit" id="form_button">
+								Отправить
+							</button>
+						</form>
+
+						<div id="resultMessage" style="display:none;">
+							Спасибо! Ваше сообщение отправлено.
+						</div>
 						<!-- END FORM -->
 					</div>
 				</div>
@@ -369,7 +408,8 @@
 	<!-- JS -->
 	<script src="./script/main.js"></script>
 	<script src="./script/modal.js"></script>
-	<script src="./script/services.js"></script>
+	<!-- <script src="./script/services.js"></script> -->
+	<!-- <script src="./script/app.js"></script> -->
 	<!-- JS -->
 
 </body>
