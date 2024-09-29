@@ -1,43 +1,70 @@
 <?php
+// Файлы phpmailer
+require 'mailer/PHPMailer.php';
+require 'mailer/SMTP.php';
+require 'mailer/Exception.php';
 
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\Exception;
+# проверка, что ошибки нет
+if (!error_get_last()) {
 
-    require "PHPMailer/src/Exception.php";
-    require "PHPMailer/src/PHPMailer.php";
+    // Переменные, которые отправляет пользователь
+    $name = $_POST['name'];
+    $email = $_POST['phone'];
+    $text = $_POST['message'];
 
-    $mail = new PHPMailer(true);
-	
+
+    // Формирование самого письма
+    $title = "Заголовок письма";
+    $body = "
+    <h2>Новое письмо</h2>
+    <b>Имя:</b> $name<br>
+    <b>Почта:</b> $email<br><br>
+    <b>Сообщение:</b><br>$text
+    ";
+
+    // Настройки PHPMailer
+    $mail = new PHPMailer\PHPMailer\PHPMailer();
+
+    $mail->isSMTP();
     $mail->CharSet = "UTF-8";
-    $mail->IsHTML(true);
+    $mail->SMTPAuth   = true;
+    $mail->SMTPDebug = 2;
+    $mail->Debugoutput = function ($str, $level) {
+        $GLOBALS['data']['debug'][] = $str;
+    };
 
-    $name = $_POST["name"];
-    // $email = $_POST["email"];
-	$phone = $_POST["phone"];
-    $message = $_POST["message"];
-	$email_template = "template_mail.html";
+    // Настройки вашей почты
+    $mail->Host       = 'smtp.yandex.ru'; // SMTP сервера вашей почты
+    $mail->Username   = 'EatDucks@yandex.ru'; // Логин на почте
+    $mail->Password   = 'oooyqxvudijqpccn'; // Пароль на почте
+    $mail->SMTPSecure = 'ssl';
+    $mail->Port       = 465;
+    $mail->setFrom('EatDucks@yandex.ru', 'EatDucks'); // Адрес самой почты и имя отправителя
 
-    $body = file_get_contents($email_template);
-	$body = str_replace('%name%', $name, $body);
-	// $body = str_replace('%email%', $email, $body);
-	$body = str_replace('%phone%', $phone, $body);
-	$body = str_replace('%message%', $message, $body);
+    // Получатель письма
+    $mail->addAddress('EatDucks@yandex.ru');
+    // $mail->addAddress('poluchatel2@gmail.com'); // Ещё один, если нужен
 
-    $mail->addAddress("radugasix@gmail.com");   // Здесь введите Email, куда отправлять
-	// $mail->setFrom($email);
-    $mail->Subject = "[Заявка с формы]";
-    $mail->MsgHTML($body);
+    // Отправка сообщения
+    $mail->isHTML(true);
+    $mail->Subject = $title;
+    $mail->Body = $body;
 
-    if (!$mail->send()) {
-        $message = "Ошибка отправки";
+    // Проверяем отправленность сообщения
+    if ($mail->send()) {
+        $data['result'] = "success";
+        $data['info'] = "Сообщение успешно отправлено!";
     } else {
-        $message = "Данные отправлены!";
+        $data['result'] = "error";
+        $data['info'] = "Сообщение не было отправлено. Ошибка при отправке письма";
+        $data['desc'] = "Причина ошибки: {$mail->ErrorInfo}";
     }
-	
-	$response = ["message" => $message];
+} else {
+    $data['result'] = "error";
+    $data['info'] = "В коде присутствует ошибка";
+    $data['desc'] = error_get_last();
+}
 
-    header('Content-type: application/json');
-    echo json_encode($response);
-
-
-?>
+// Отправка результата
+header('Content-Type: application/json');
+echo json_encode($data);

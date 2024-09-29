@@ -2,6 +2,7 @@
     <div class="modal__content">
         <span class="close">&times;</span>
         <!-- START FORM -->
+        <?php $formId = 'headerForm'; ?>
         <?php include('form.php'); ?>
         <!-- END FORM -->
 

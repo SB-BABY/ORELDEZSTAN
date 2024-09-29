@@ -1,57 +1,66 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("contactForm");
+    const modalForm = document.getElementById("modalForm");
+    const headerForm = document.getElementById("headerForm");
     const formMessage = document.getElementById("formMessage");
 
-    const validFormArr = [];
-    const formArr = Array.from(form.elements);
+    if (modalForm) {
+        setupForm(modalForm);
+    }
 
-    // Подготовка к валидации полей
-    formArr.forEach((el) => {
-        if (el.hasAttribute("data-reg")) {
-            el.setAttribute("is-valid", "0");
-            validFormArr.push(el);
+    if (headerForm) {
+        setupForm(headerForm);
+    }
+
+    function setupForm(form) {
+        const validFormArr = [];
+        const formArr = Array.from(form.elements);
+
+        formArr.forEach((el) => {
+            if (el.hasAttribute("data-reg")) {
+                el.setAttribute("is-valid", "0");
+                validFormArr.push(el);
+            }
+        });
+
+        form.addEventListener("input", inputHandler);
+        form.addEventListener("submit", formCheck);
+
+        function inputHandler({ target }) {
+            if (target.hasAttribute("data-reg")) {
+                inputCheck(target);
+            }
         }
-    });
 
-    // Добавляем обработчик на ввод данных в форму
-    form.addEventListener("input", inputHandler);
-    form.addEventListener("submit", formCheck);
+        function inputCheck(el) {
+            const inputValue = el.value;
+            const inputReg = el.getAttribute("data-reg");
+            const reg = new RegExp(inputReg);
 
-    function inputHandler({ target }) {
-        if (target.hasAttribute("data-reg")) {
-            inputCheck(target);
+            if (reg.test(inputValue)) {
+                el.setAttribute("is-valid", "1");
+                el.style.border = "2px solid rgb(0, 196, 0)";
+            } else {
+                el.setAttribute("is-valid", "0");
+                el.style.border = "2px solid rgb(255, 0, 0)";
+            }
+        }
+
+        function formCheck(e) {
+            e.preventDefault();
+            const allValid = validFormArr.every(el => el.getAttribute("is-valid") === "1");
+
+            if (!allValid) {
+                formMessage.textContent = "Пожалуйста, заполните все поля корректно.";
+                formMessage.style.color = "red";
+                formMessage.style.display = "block";
+                return;
+            }
+
+            formSubmit(form);
         }
     }
 
-    function inputCheck(el) {
-        const inputValue = el.value;
-        const inputReg = el.getAttribute("data-reg");
-        const reg = new RegExp(inputReg);
-
-        if (reg.test(inputValue)) {
-            el.setAttribute("is-valid", "1");
-            el.style.border = "2px solid rgb(0, 196, 0)"; // Зеленая рамка
-        } else {
-            el.setAttribute("is-valid", "0");
-            el.style.border = "2px solid rgb(255, 0, 0)"; // Красная рамка
-        }
-    }
-
-    function formCheck(e) {
-        e.preventDefault();
-        const allValid = validFormArr.every(el => el.getAttribute("is-valid") === "1");
-
-        if (!allValid) {
-            formMessage.textContent = "Пожалуйста, заполните все поля корректно.";
-            formMessage.style.color = "red";
-            formMessage.style.display = "block";
-            return;
-        }
-
-        formSubmit();
-    }
-
-    async function formSubmit() {
+    async function formSubmit(form) {
         const data = new FormData(form);
         try {
             const response = await fetch("send_mail.php", {
