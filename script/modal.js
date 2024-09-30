@@ -1,95 +1,64 @@
-// Получаем элементы
-const modal = document.getElementById('contactModal');
-const openModalButtons = document.querySelectorAll('.open-modal'); // Получаем все кнопки с классом open-modal
-const span = document.getElementsByClassName('close')[0];
-const body = document.body; // Получаем элемент body
-const form = document.getElementById('contactForm');
-const resultMessage = document.getElementById('resultMessage');
-const modalMessage = document.getElementById('modalMessage');
+document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById('contactModal');
+    const openModalButtons = document.querySelectorAll('.open-modal'); // Кнопки для открытия модального окна
+    const closeModalButton = document.getElementsByClassName('close')[0];
+    const body = document.body; // Элемент body для блокировки прокрутки
+    const modalForm = document.getElementById("modalForm");
+    const headerForm = document.getElementById("headerForm");
+    const formMessage = document.getElementById("formMessage");
+    const resultMessage = document.getElementById("resultMessage");
+    const modalMessage = document.getElementById('modalMessage');
+    const phoneInput = document.getElementById("phone");
+    const phoneError = document.getElementById("phoneError");
 
-const modalForm = document.getElementById("modalForm");
-const headerForm = document.getElementById("headerForm");
-const formMessage = document.getElementById("formMessage");
-
-// Добавляем обработчик событий для всех кнопок открытия модального окна
-openModalButtons.forEach(button => {
-    button.addEventListener('click', function (event) {
-        event.preventDefault(); // Предотвращаем переход по ссылке
+    // Функция открытия модального окна
+    function openModal() {
         modal.style.display = 'block';
         body.classList.add('modal-open'); // Блокируем прокрутку страницы
-    });
-});
+    }
 
-// Когда пользователь нажимает на <span> (x), модальное окно закрывается
-span.onclick = function () {
-    modal.style.display = 'none';
-    body.classList.remove('modal-open'); // Разблокируем прокрутку страницы
-    resetModal();
-}
-
-// Когда пользователь кликает вне модального окна, оно закрывается
-window.onclick = function (event) {
-    if (event.target === modal) {
+    // Функция закрытия модального окна
+    function closeModal() {
         modal.style.display = 'none';
         body.classList.remove('modal-open'); // Разблокируем прокрутку страницы
         resetModal();
     }
-}
 
-// Валидация формы
-const formArr = Array.from(form.elements);
-const validFormArr = [];
-const button = form.querySelector('button[type="submit"]');
+    // Добавляем обработчики событий для всех кнопок открытия модального окна
+    openModalButtons.forEach(button => {
+        button.addEventListener('click', function (event) {
+            event.preventDefault(); // Предотвращаем переход по ссылке
+            openModal();
+        });
+    });
 
-// Подготавливаем элементы формы с атрибутом data-reg для валидации
-formArr.forEach((el) => {
-    if (el.hasAttribute("data-reg")) {
-        el.setAttribute("is-valid", "0");
-        validFormArr.push(el);
-    }
-});
+    // Когда пользователь нажимает на кнопку закрытия (x), модальное окно закрывается
+    closeModalButton.onclick = function () {
+        closeModal();
+    };
 
-// Обработчики для валидации полей при вводе и при отправке формы
-form.addEventListener("input", inputHandler);
-form.addEventListener("submit", formCheck);
+    // Когда пользователь кликает вне модального окна, оно также закрывается
+    window.onclick = function (event) {
+        if (event.target === modal) {
+            closeModal();
+        }
+    };
 
-function inputHandler({ target }) {
-    if (target.hasAttribute("data-reg")) {
-        inputCheck(target);
-    }
-}
-
-function inputCheck(el) {
-    const inputValue = el.value;
-    const inputReg = el.getAttribute("data-reg");
-    const reg = new RegExp(inputReg);
-
-    if (reg.test(inputValue)) {
-        el.setAttribute("is-valid", "1");
-        el.style.border = "2px solid rgb(0, 196, 0)"; // Зеленая рамка при успешной валидации
-    } else {
-        el.setAttribute("is-valid", "0");
-        el.style.border = "2px solid rgb(255, 0, 0)"; // Красная рамка при ошибке
-    }
-}
-
-function formCheck(e) {
-    e.preventDefault();
-    const allValid = validFormArr.every(el => el.getAttribute("is-valid") === "1");
-
-    if (!allValid) {
-        modalMessage.textContent = "Пожалуйста, заполните все поля корректно.";
-        modalMessage.style.color = "red"; // Сообщение об ошибке
-        return;
+    // Функция для сброса состояния модального окна
+    function resetModal() {
+        if (modalForm) {
+            modalForm.reset(); // Сбрасываем поля формы
+        }
+        resultMessage.style.display = 'none'; // Скрываем сообщение
+        modalMessage.textContent = ''; // Очищаем сообщение
     }
 
-    formSubmit();
-}
-
-if (modalForm) {
+    // Если модальная форма существует, настраиваем её
+    if (modalForm) {
         setupForm(modalForm);
     }
 
+    // Если форма в заголовке существует, настраиваем её
     if (headerForm) {
         setupForm(headerForm);
     }
@@ -122,9 +91,15 @@ if (modalForm) {
             if (reg.test(inputValue)) {
                 el.setAttribute("is-valid", "1");
                 el.style.border = "2px solid rgb(0, 196, 0)";
+                if (el === phoneInput) {
+                    phoneError.style.display = 'none'; // Скрыть сообщение об ошибке
+                }
             } else {
                 el.setAttribute("is-valid", "0");
                 el.style.border = "2px solid rgb(255, 0, 0)";
+                if (el === phoneInput) {
+                    phoneError.style.display = 'block'; // Показать сообщение об ошибке
+                }
             }
         }
 
@@ -153,9 +128,10 @@ if (modalForm) {
 
             if (response.ok) {
                 let result = await response.json();
-                formMessage.textContent = result.message || "Спасибо, ваша заявка отправлена!";
-                formMessage.style.color = "green";
-                formMessage.style.display = "block";
+                modalMessage.textContent = result.message || "Спасибо, ваша заявка отправлена!";
+                modalMessage.style.display = 'block'; // Показываем сообщение
+                form.style.display = 'none'; // Скрываем форму
+                resultMessage.style.display = 'block'; // Показываем блок результата
                 form.reset();
             } else {
                 formMessage.textContent = "Ошибка отправки данных. Код ошибки: " + response.status;
@@ -168,50 +144,4 @@ if (modalForm) {
             formMessage.style.display = "block";
         }
     }
-
-
-// Функция отправки данных на сервер
-async function sendData(data) {
-    return await fetch("send_mail.php", {
-        method: "POST",
-        body: data,
-    });
-}
-
-// Сброс формы
-function formReset() {
-    form.reset(); // Сбрасываем поля формы
-    validFormArr.forEach((el) => {
-        el.setAttribute("is-valid", "0");
-        el.style.border = "none"; // Убираем рамку
-    });
-}
-
-// Сброс модального окна
-function resetModal() {
-    form.style.display = 'block'; // Показываем форму
-    resultMessage.style.display = 'none'; // Скрываем сообщение
-    modalMessage.textContent = ''; // Очищаем сообщение
-}
-
-async function formSubmit() {
-    const data = new FormData(form);
-    try {
-        const response = await sendData(data);
-        if (response.ok) {
-            let result = await response.json();
-            modalMessage.textContent = result.message;
-            modalMessage.style.color = "green"; // Сообщение об успешной отправке
-            form.style.display = 'none'; // Скрываем форму
-            resultMessage.style.display = 'block'; // Показываем сообщение
-        } else {
-            modalMessage.textContent = "Ошибка отправки данных. Код ошибки: " + response.status;
-            modalMessage.style.color = "red"; // Сообщение об ошибке сервера
-        }
-        formReset(); // Сброс формы после отправки
-    } catch (error) {
-        modalMessage.textContent = "Произошла ошибка. Попробуйте позже.";
-        modalMessage.style.color = "red"; // Сообщение об общей ошибке
-    }
-}
-
+});

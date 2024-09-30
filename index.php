@@ -341,7 +341,7 @@
 
 						<!-- START FORM -->
 						<!-- Форма в модальном окне -->
-						<?php $formId = 'modalForm'; ?>
+						<?php $formId = 'headerForm'; ?>
 						<?php include('form.php'); ?>
 
 
@@ -371,7 +371,6 @@
 	<!-- JS -->
 	<script src="./script/main.js"></script>
 	<script src="./script/modal.js"></script>
-	<script src="./script/app.js"></script>
 	<script src="./script/services.js"></script>
 	<!-- JS -->
 

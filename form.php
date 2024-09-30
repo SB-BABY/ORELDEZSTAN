@@ -9,7 +9,9 @@
         <label class="field__label" for="phone">Телефон*</label>
         <input class="field__input" id="phone" name="phone" type="text" placeholder="Телефон" required
             data-reg="^((\+7|7|8)+([0-9]){10})$" />
+        <small class="error-message" id="phoneError" style="color: red; display: none;">Неверный формат номера телефона</small> <!-- Сообщение об ошибке -->
     </div>
+
     <div class="contact__field field">
         <label class="field__label" for="message">Вопрос*</label>
         <textarea class="field__input field__input--textarea" id="message" name="message"
@@ -20,6 +22,7 @@
     </button>
 </form>
 
-<div id="resultMessage" style="display:none;">
-    Спасибо! Ваше сообщение отправлено.
+<!-- Сообщение об успешной отправке -->
+<div id="resultMessage" style="display: none;">
+    <p id="modalMessage"></p>
 </div>
