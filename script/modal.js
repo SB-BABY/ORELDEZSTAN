@@ -1,64 +1,59 @@
 document.addEventListener("DOMContentLoaded", () => {
     const modal = document.getElementById('contactModal');
-    const openModalButtons = document.querySelectorAll('.open-modal'); // Кнопки для открытия модального окна
+    const openModalButtons = document.querySelectorAll('.open-modal');
     const closeModalButton = document.getElementsByClassName('close')[0];
-    const body = document.body; // Элемент body для блокировки прокрутки
+    const body = document.body;
+
+    // Модальная форма и форма в заголовке
     const modalForm = document.getElementById("modalForm");
     const headerForm = document.getElementById("headerForm");
-    const formMessage = document.getElementById("formMessage");
-    const resultMessage = document.getElementById("resultMessage");
-    const modalMessage = document.getElementById('modalMessage');
-    const phoneInput = document.getElementById("phone");
-    const phoneError = document.getElementById("phoneError");
 
     // Функция открытия модального окна
     function openModal() {
         modal.style.display = 'block';
-        body.classList.add('modal-open'); // Блокируем прокрутку страницы
+        body.classList.add('modal-open');
     }
 
     // Функция закрытия модального окна
     function closeModal() {
         modal.style.display = 'none';
-        body.classList.remove('modal-open'); // Разблокируем прокрутку страницы
-        resetModal();
+        body.classList.remove('modal-open');
+        resetForm(modalForm);
     }
 
-    // Добавляем обработчики событий для всех кнопок открытия модального окна
     openModalButtons.forEach(button => {
         button.addEventListener('click', function (event) {
-            event.preventDefault(); // Предотвращаем переход по ссылке
+            event.preventDefault();
             openModal();
         });
     });
 
-    // Когда пользователь нажимает на кнопку закрытия (x), модальное окно закрывается
     closeModalButton.onclick = function () {
         closeModal();
     };
 
-    // Когда пользователь кликает вне модального окна, оно также закрывается
     window.onclick = function (event) {
         if (event.target === modal) {
             closeModal();
         }
     };
 
-    // Функция для сброса состояния модального окна
-    function resetModal() {
-        if (modalForm) {
-            modalForm.reset(); // Сбрасываем поля формы
+    // Сброс формы и скрытие сообщений
+    function resetForm(form) {
+        if (form) {
+            form.reset();
         }
-        resultMessage.style.display = 'none'; // Скрываем сообщение
-        modalMessage.textContent = ''; // Очищаем сообщение
+        const resultMessage = document.querySelector(`#resultMessage_${form.id}`);
+        const modalMessage = document.querySelector(`#modalMessage_${form.id}`);
+        resultMessage.style.display = 'none';
+        modalMessage.textContent = '';
     }
 
-    // Если модальная форма существует, настраиваем её
+    // Настройка валидации и отправки для каждой формы
     if (modalForm) {
         setupForm(modalForm);
     }
 
-    // Если форма в заголовке существует, настраиваем её
     if (headerForm) {
         setupForm(headerForm);
     }
@@ -91,14 +86,16 @@ document.addEventListener("DOMContentLoaded", () => {
             if (reg.test(inputValue)) {
                 el.setAttribute("is-valid", "1");
                 el.style.border = "2px solid rgb(0, 196, 0)";
-                if (el === phoneInput) {
-                    phoneError.style.display = 'none'; // Скрыть сообщение об ошибке
+                const phoneError = document.querySelector(`#phoneError_${form.id}`);
+                if (el.name === 'phone') {
+                    phoneError.style.display = 'none';
                 }
             } else {
                 el.setAttribute("is-valid", "0");
                 el.style.border = "2px solid rgb(255, 0, 0)";
-                if (el === phoneInput) {
-                    phoneError.style.display = 'block'; // Показать сообщение об ошибке
+                const phoneError = document.querySelector(`#phoneError_${form.id}`);
+                if (el.name === 'phone') {
+                    phoneError.style.display = 'block';
                 }
             }
         }
@@ -107,18 +104,21 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
             const allValid = validFormArr.every(el => el.getAttribute("is-valid") === "1");
 
+            const modalMessage = document.querySelector(`#modalMessage_${form.id}`);
+            const resultMessage = document.querySelector(`#resultMessage_${form.id}`);
+
             if (!allValid) {
-                formMessage.textContent = "Пожалуйста, заполните все поля корректно.";
-                formMessage.style.color = "red";
-                formMessage.style.display = "block";
+                modalMessage.textContent = "Пожалуйста, заполните все поля корректно.";
+                modalMessage.style.color = "red";
+                resultMessage.style.display = "block";
                 return;
             }
 
-            formSubmit(form);
+            formSubmit(form, modalMessage, resultMessage);
         }
     }
 
-    async function formSubmit(form) {
+    async function formSubmit(form, modalMessage, resultMessage) {
         const data = new FormData(form);
         try {
             const response = await fetch("send_mail.php", {
@@ -129,19 +129,17 @@ document.addEventListener("DOMContentLoaded", () => {
             if (response.ok) {
                 let result = await response.json();
                 modalMessage.textContent = result.message || "Спасибо, ваша заявка отправлена!";
-                modalMessage.style.display = 'block'; // Показываем сообщение
-                form.style.display = 'none'; // Скрываем форму
-                resultMessage.style.display = 'block'; // Показываем блок результата
-                form.reset();
+                resultMessage.style.display = 'block';
+                form.style.display = 'none'; // Скрываем форму после отправки
             } else {
-                formMessage.textContent = "Ошибка отправки данных. Код ошибки: " + response.status;
-                formMessage.style.color = "red";
-                formMessage.style.display = "block";
+                modalMessage.textContent = "Ошибка отправки данных. Код ошибки: " + response.status;
+                modalMessage.style.color = "red";
+                resultMessage.style.display = 'block';
             }
         } catch (error) {
-            formMessage.textContent = "Произошла ошибка. Попробуйте позже.";
-            formMessage.style.color = "red";
-            formMessage.style.display = "block";
+            modalMessage.textContent = "Произошла ошибка. Попробуйте позже.";
+            modalMessage.style.color = "red";
+            resultMessage.style.display = 'block';
         }
     }
 });
