@@ -7,19 +7,22 @@
     <div class="mobile-overlay__body">
         <ul class="mobile-overlay__list dropdown__mobile" id="dropdown__mobile">
             <li class="mobile-overlay__item">
-                <a class="mobile-overlay__link" href="services.html">Услуги</a>
+                <a class="mobile-overlay__link" href="index.php">Главная</a>
             </li>
             <li class="mobile-overlay__item">
-                <a class="mobile-overlay__link" href="contact.html">Контакты</a>
+                <a class="mobile-overlay__link" href="services.php">Услуги</a>
             </li>
             <li class="mobile-overlay__item">
-                <a class="mobile-overlay__link" href="documents.html">Документы</a>
+                <a class="mobile-overlay__link" href="contact.php">Контакты</a>
             </li>
             <li class="mobile-overlay__item">
-                <a class="mobile-overlay__link" href="about.html">О нас</a>
+                <a class="mobile-overlay__link" href="documents.php">Документы</a>
             </li>
             <li class="mobile-overlay__item">
-                <a class="mobile-overlay__link" href="korupzia.html">Противодействие коррупции</a>
+                <a class="mobile-overlay__link" href="about.php">О нас</a>
+            </li>
+            <li class="mobile-overlay__item">
+                <a class="mobile-overlay__link" href="korupzia.php">Противодействие коррупции</a>
             </li>
 
             <li class="mobile-overlay__item">

@@ -139,7 +139,9 @@
 
 	<!-- JS -->
 	<script src="./script/main.js"></script>
+	<script src="./script/app.js"></script>
 	<script src="./script/modal.js"></script>
+	<!-- <script src="./script/services.js"></script> -->
 	<!-- JS -->
 
 </body>
